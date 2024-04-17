@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Clone</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+
+</head>
+<body class="text-white" style="background-color: #141414;">
+ <header class="p-5 flex justify-between items-center">
+        <img src="/static/images/logo.png" height="30" alt="Netflix Logo" width="110">
+
+
+        <nav class="flex space-x-5">
+            <span><a href="/">Home</a></span>
+
+            <div class="dropdown">
+                <span id="dropdownMenuButton" class="cursor-pointer">Genres ▼</span>
+
+                <div id="dropdownMenu" class="dropdown-content hidden">
+                    <ul><a href="/genre/action/">Action</a></ul>
+                    <ul><a href="/genre/comedy/">Comedy</a></ul>
+                    <ul><a href="/genre/drama/">Drama</a></ul>
+                    <ul><a href="/genre/horror/">Horror</a></ul>
+                    <ul><a href="/genre/romance/">Romance</a></ul>
+                    <ul><a href="/genre/sciencefiction/">Science Fiction</a></ul>
+                    <ul><a href="/genre/fantasy/">Fantasy</a></ul>
+                </div>
+            </div>
+
+            <span><a href="/my_list">My List</a></span>
+        </nav>
+       <div class="flex space-x-5 items-center">
+           <a href="https://github.com/h41pa"><img src="/static/images/github.png" alt="Github"></a>
+        <a href="https://www.linkedin.com/in/h41pa/"><img src="/static/images/linkedin.png" alt="linkedin"></a>
+        <a href="https://discordapp.com/users/176105464675827712"><img src="/static/images/discord.png"
+                                                                       alt="discord"></a>
+           <form action="/search" method="POST">
+               {% csrf_token %}
+               <input type="search" name="search_term" placeholder="Search" class="bg-gray-700 p-2 rounded">
+               <button type="submit" class="bg-red-600 text-white p-2 rounded hover:bg-red-500">Search</button>
+           </form>
+           <div class="relative">
+               <a href="#" class="block p-2">Welcome, {{user.username}}</a>
+               <a href="/logout" class="block p-2">Logout</a>
+
+           </div>
+       </div>
+ </header>
+        <hr>
+
+        <section class="py-10 px-5">
+            <div align="center">
+            <h2 class="text-xl mb-5">'{{movie_genre | title}}' Films'</h2>
+            </div>
+
+             <div class="flex space-x-5 overflow-x-auto">
+                 {% for movie in movies reversed %}
+                 <div class="w-40 h-64 flex-shrink-0 film-card">
+                     <br>
+                     <a href="/movie/{{movie.movie_id}}">
+                         <img src="{{movie.image_card.url}}" alt="{{movies.title}}" class="w-full h-full object-cover">
+                     </a>
+                 </div>
+
+                 {% endfor %}
+             </div>
+
+        </section>
+
+</body>
+</html>

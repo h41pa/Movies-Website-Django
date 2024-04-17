@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{movie_details.title}}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-blue-900 text-white"
+      style="background-color: #181818;">
+<header class="p-5 flex justify-between items-center">
+    <img src="/static/images/logo.png" height="30" alt="Netflix Logo"
+         width="110">
+
+    <nav class="flex space-x-5">
+        <span><a href="/">Home</a></span>
+        <span>Series</span>
+        <span>Films</span>
+        <span>New & Popular</span>
+        <span><a href="/my_list/">My List</a></span>
+    </nav>
+    <div class="flex space-x-5 items-center">
+        <a href="https://github.com/h41pa"><img src="/static/images/github.png" alt="Github"></a>
+        <a href="https://www.linkedin.com/in/h41pa/"><img src="/static/images/linkedin.png" alt="linkedin"></a>
+        <a href="https://discordapp.com/users/176105464675827712"><img src="/static/images/discord.png"
+                                                                       alt="discord"></a>
+        <form action="/search" method="POST">
+            {% csrf_token %}
+            <input type="search" name="search_term" placeholder="Search..." class="bg-gray-700 p-2 rounded">
+            <button class="bg-red-600 text-white p-2 rounded hover:bg-red-500">Search</button>
+        </form>
+        <div class="relative">
+            <a href="/logout" class="block p-2">Logout</a>
+        </div>
+    </div>
+</header>
+<hr>
+
+<div class="container mx-auto mt-10">
+    <div class="flex items-center justify-between">
+
+        <span class="flex items-center">
+            <h2 class="text-3xl font-semibold">{{movie_details.title}}</h2>
+            <form method="POST" action="{% url 'add_to_list' movie_details.movie_id %}">
+                {% csrf_token %}
+                <button type="submit" class="border border-white text-white p-2 px-5 rounded hover:bg-gray-700 ml-3">
+                    <img src="/static/images/add-to-favorites.png">
+                    {% for message in messages %}
+                       {{message}}
+                    {% endfor %}
+                </button>
+            </form>
+        </span>
+        <a href="/" class="text-gray-400 hover:text-white">← Back to movies</a>
+    </div>
+</div>
+
+<div class="container mx-auto mt-10 ">
+    <img src="{{movie_details.image_cover.url}}" style="width: 60%;">
+    <h2 class="text-xl font-semibold mb-2">Movie info: </h2>
+    <h2 class="text-xl font-semibold mb-2">Seen: {{movie_details.movie_views}} times</h2>
+    <h2 class="text-xl font-semibold mb-2">Release Date: {{movie_details.release_date}}</h2>
+    <h2 class="text-xl font-semibold mb-2">Genre: {{movie_details.genre}}</h2>
+    <h2 class="text-xl font-semibold mb-2">Duration: {{movie_details.length}} minutes. </h2>
+    <h3 class="text-xl font-semibold mb-2">About the Movie:</h3>
+    <p><b>
+        {{movie_details.description}}
+    </b></p>
+    <br>
+    <h3 class="text-xl font-semibold mb-2">Movie Video:</h3>
+    <!--    <br>-->
+
+    <video class="w-medium h-auto" controls>
+        <source src="{{movie_details.video.url}}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+
+</div>
+</body>
+</htmL>
