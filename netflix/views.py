@@ -3,15 +3,13 @@ from .models import Movie, MovieList
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.http import JsonResponse
-import re
 from django.contrib.auth.models import User, auth
 
 
 @login_required(login_url='login')
 def index(request):
     movies = Movie.objects.all()
-    featured_movie = movies[len(movies) - 2]
+    featured_movie = movies[len(movies) - 1]
     most_views = Movie.objects.order_by('-movie_views')
     context = {
         'movies': movies,
