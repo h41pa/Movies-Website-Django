@@ -141,5 +141,6 @@ pip install whitenoise
 2) add 'whitenoise.middleware.WhiteNoiseMiddleware',  in MIDDLEWARE 
 
 3 ) add STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
+4 ) in urls add: so media file works
+re_path(r"^media/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT, }, ),
 """
