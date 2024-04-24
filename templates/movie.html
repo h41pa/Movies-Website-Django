@@ -6,13 +6,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{movie_details.title}}</title>
+    <style>
+        @media only screen and (max-width: 600px) {
+            /* Stiluri pentru ecrane mai mici de 600px */
+            .sm\:w-full { width: 100%; }
+        }
+
+        @media only screen and (min-width: 601px) and (max-width: 1024px) {
+            /* Stiluri pentru ecrane între 601px și 1024px */
+            .md\:w-full { width: 100%; }
+        }
+
+        @media only screen and (min-width: 1025px) {
+            /* Stiluri pentru ecrane mai mari de 1025px */
+            .lg\:w-1/2 { width: 50%; }
+        }
+    </style>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-blue-900 text-white"
       style="background-color: #181818;">
 <header class="p-5 flex justify-between items-center">
-    <img src="/static/images/logo.png" height="30" alt="Netflix Logo"
-         width="110">
+    <a href="/"><img src="/static/images/logo.png" height="30" alt="Netflix Logo"
+                     width="110"></a>
 
     <nav class="flex space-x-5">
         <span><a href="/">Home</a></span>
@@ -43,16 +59,33 @@
 
         <span class="flex items-center">
             <h2 class="text-3xl font-semibold">{{movie_details.title}}</h2>
-            <form method="POST" action="{% url 'add_to_list' movie_details.movie_id %}">
-                {% csrf_token %}
-                <button type="submit" class="border border-white text-white p-2 px-5 rounded hover:bg-gray-700 ml-3">
-                    <img src="/static/images/add-to-favorites.png">
-                    {% for message in messages %}
-                       {{message}}
-                    {% endfor %}
-                </button>
-            </form>
         </span>
+
+        {% if is_in_favorite_list %}
+        <form method="POST" action="{% url 'remove_from_list' movie_details.movie_id %}">
+            {% csrf_token %}
+            <button type="submit" class="border border-black text-white p-2 px-5 rounded hover:bg-gray-700 ml-3">
+                <img src="/static/images/remove-from-favorites.png"
+                     style="display: block; margin-left: auto; margin-right: auto;">
+                {% for message in messages %}
+                {{message}}
+                {% endfor %}
+            </button>
+        </form>
+        {% else %}
+        <form method="POST" action="{% url 'add_to_list' movie_details.movie_id %}">
+            {% csrf_token %}
+            <button type="submit" class="border border-black text-white p-2 px-5 rounded hover:bg-gray-700 ml-3">
+                <img src="/static/images/add-to-favorites.png"
+                     style="display: block; margin-left: auto; margin-right: auto;">
+                {% for message in messages %}
+                {{message}}
+                {% endfor %}
+            </button>
+        </form>
+        {% endif %}
+
+
         <a href="/" class="text-gray-400 hover:text-white">← Back to movies</a>
     </div>
 </div>
