@@ -27,7 +27,6 @@ def movie(request, pk):
     movie_details.movie_views += 1
     movie_details.save()
     is_in_favorite_list = MovieList.objects.filter(owner_user=request.user, movie=movie_details).exists()
-
     context = {
         'movie_details': movie_details,
         'is_in_favorite_list': is_in_favorite_list
@@ -71,25 +70,6 @@ def my_list(request):
         'movies': user_movie_list
     }
     return render(request, 'my_list.html', context)
-
-
-@login_required(login_url='login')
-def add_to_list(request, movie_id):
-    if request.method == 'POST':
-        user = request.user
-        movie = get_object_or_404(Movie, movie_id=movie_id)
-
-        if MovieList.objects.filter(owner_user=user, movie=movie).exists():
-            messages.info(request, 'Movie already in list')
-            return redirect('movie', pk=movie_id)
-
-        movie_list_entry = MovieList.objects.create(owner_user=user, movie=movie)
-        movie_list_entry.save()
-        messages.info(request, 'Added ✓')
-        return redirect('movie', pk=movie_id)
-
-    else:
-        return redirect('/')
 
 
 def login(request):
@@ -160,6 +140,25 @@ def remove_from_list(request, movie_id):
         else:
             messages.info(request, 'Movie not found in your list')
             return redirect('movie', pk=movie_id)
+
+    else:
+        return redirect('/')
+
+
+@login_required(login_url='login')
+def add_to_list(request, movie_id):
+    if request.method == 'POST':
+        user = request.user
+        movie = get_object_or_404(Movie, movie_id=movie_id)
+
+        if MovieList.objects.filter(owner_user=user, movie=movie).exists():
+            messages.info(request, 'Movie already in list')
+            return redirect('movie', pk=movie_id)
+
+        movie_list_entry = MovieList.objects.create(owner_user=user, movie=movie)
+        movie_list_entry.save()
+        messages.info(request, 'Added ✓')
+        return redirect('movie', pk=movie_id)
 
     else:
         return redirect('/')

@@ -4,7 +4,6 @@ from django.conf import settings
 
 
 class Movie(models.Model):
-
     GENRE_CHOICES = [
         ('action', 'Action'),
         ('comedy', 'Comedy'),
@@ -23,7 +22,7 @@ class Movie(models.Model):
     length = models.PositiveIntegerField()
     image_card = models.ImageField(upload_to='movie_images/')
     image_cover = models.ImageField(upload_to='movie_images/')
-    video = models.FileField(upload_to='movie_videos/') # video via upload
+    video = models.FileField(upload_to='movie_videos/')  # video via upload
     # video = models.URLField()  # video via links
     movie_views = models.IntegerField(default=0)
 
@@ -32,5 +31,5 @@ class Movie(models.Model):
 
 
 class MovieList(models.Model):
-    owner_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,)
+    owner_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, )
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
