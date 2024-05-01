@@ -128,19 +128,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # for deploy on web
-# CSRF_TRUSTED_ORIGINS = ['*']
-# CSRF_COOKIE_SECURE = True
-# SESSION_COOKIE_SECURE = True
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-# for static files to work with debug  = False
-"""
-1 )
-pip install whitenoise
-
-2) add 'whitenoise.middleware.WhiteNoiseMiddleware',  in MIDDLEWARE 
-
-3 ) add STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-4 ) in urls add: so media file works
-re_path(r"^media/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT, }, ),
-"""
+CSRF_TRUSTED_ORIGINS = ['*']
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
