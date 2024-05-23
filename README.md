@@ -32,7 +32,7 @@ doar de superuserul creat.
 <img src="https://i.imgur.com/yvW8NqT.png" alt="dot" width="12" height="12"> Html si css pentru partea de frontend <br>
 <img src="https://i.imgur.com/yvW8NqT.png" alt="dot" width="12" height="12"> Sqlite - pentru baza date<br>
 </h4>
-
+<br>
 <h2>Instructiuni de instalare si rulare a proiectului:</h2>
 
 <img src="https://i.imgur.com/yvW8NqT.png" alt="dot" width="12" height="12"> Cloneaza acest reposity local in folderul
