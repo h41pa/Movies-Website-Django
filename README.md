@@ -9,7 +9,7 @@ Movies website<br>
 
 <h2>Despre proiect:</h2>
 <h4>
-Movies website, este o aplicatie web similara cu Netflix, realizata folosind framework-ul Django</h4><br>
+Movies website, este o aplicatie web similara cu Netflix, realizata folosind framework-ul Django. </h4><br>
 <img src="https://i.imgur.com/kqW1QPD.png" alt="sc">
 <h2>Features:<br></h2>
 <h4>
@@ -64,7 +64,8 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-<img src="https://i.imgur.com/yvW8NqT.png" alt="dot" width="12" height="12"> Dupa ce serverul porneste poti folosit aplicatia in broweser cu adresa <a href="http://127.0.0.1:8000/"> http://127.0.0.1:8000/</a> 
+<br>
+<img src="https://i.imgur.com/yvW8NqT.png" alt="dot" width="12" height="12"> Dupa ce serverul porneste poti folosit aplicatia in browser cu adresa <a href="http://127.0.0.1:8000/"> http://127.0.0.1:8000/</a> 
 <br>
 Pentru a folosi aplicatie trebuie sa te inregistrezi sau poti folosi datele (username= test si pass=1234)<br>
 Pentru a adauga filme , sterge, edita, vedea baza de date trebuie sa te loghezi in panoul admin <a href="http://127.0.0.1:8000/admin"> http://127.0.0.1:8000/admin</a> cu datele(user = vanitas, pass = 1234) sau creezi un nou superuser cu comanda:<br>
@@ -73,7 +74,7 @@ Pentru a adauga filme , sterge, edita, vedea baza de date trebuie sa te loghezi 
 python manage.py createsuperuser
 ```
 
-<img src="https://i.imgur.com/yvW8NqT.png" alt="dot" width="12" height="12"> Aplica este incarca si pe webn pe adresa: <a href="https://movies-website-django.onrender.com"> https://movies-website-django.onrender.com</a>  <br>
+<img src="https://i.imgur.com/yvW8NqT.png" alt="dot" width="12" height="12"> Aplicatia este incarca si pe web : <a href="https://movies-website-django.onrender.com"> https://movies-website-django.onrender.com</a>  <br>
 
 
 <h2>Screenshots:</h2>
