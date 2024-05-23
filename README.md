@@ -15,5 +15,5 @@ Utilizatorii pot naviga prin diferite filme , pot vedea informatii detaliate des
 pot viziona filmele respective, pot adauga filme in lista de favorite, pot cauta filmul dorit.<br>
 Pentru a folosi aplicatie web este necesara inregistrarea.<br>
 Filme se pot adauga din interfata admin doar de superuserul creat.
-<img src="https://i.imgur.com/kqW1QPD.png" alt="Logo" width="1280" height="600">
+<img src="https://i.imgur.com/kqW1QPD.png" alt="Logo"">
 </h4>
