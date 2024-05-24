@@ -45,7 +45,7 @@ git clone https://github.com/h41pa/netflixmovies-clone-django.git
 <img src="https://i.imgur.com/yvW8NqT.png" alt="dot" width="12" height="12"> Instaleaza dependintele proiectului<br>
 
 ```sh
-pip install –r requirements.txt
+pip install -r requirements.txt
 ```
 
 <img src="https://i.imgur.com/yvW8NqT.png" alt="dot" width="12" height="12"> in folderul proiectului ruleaza comanda pentru a porni serverul <br>
